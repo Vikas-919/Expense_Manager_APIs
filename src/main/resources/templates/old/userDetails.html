@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card {
+            margin-top: 50px;
+        }
+
+        .row {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <!-- Logo -->
+    <a class="navbar-brand" th:href="@{/}">
+        <img th:src="@{/images/logo.png}" alt="Expense Manager Logo" height="30">
+    </a>
+    <a class="navbar-brand" th:href="@{/}">Expense Manager</a>
+</nav>
+<div class="container" style="padding-top: 70px;">
+    <div class="card">
+        <div class="card-header bg-primary text-white text-center">
+            <h2 class="card-title mb-0">User Details</h2>
+        </div>
+        <div class="card-body">
+            <div class="row justify-content-center py-2">
+                <div class="col-md-4 text-center font-weight-bold">First Name:</div>
+                <div class="col-md-8 text-center" th:text="${user.firstName}">John</div>
+            </div>
+            <div class="row justify-content-center py-2">
+                <div class="col-md-4 text-center font-weight-bold">Last Name:</div>
+                <div class="col-md-8 text-center" th:text="${user.lastName}">Doe</div>
+            </div>
+            <div class="row justify-content-center py-2">
+                <div class="col-md-4 text-center font-weight-bold">Username:</div>
+                <div class="col-md-8 text-center" th:text="${user.userName}">johndoe</div>
+            </div>
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12 mb-2">
+                            <!-- Update Details button -->
+                            <a class="btn btn-primary btn-block" th:href="@{/profile/updateDetails}">Update Details</a>
+                        </div>
+                        <div class="col-12">
+                            <!-- Update Password button -->
+                            <a class="btn btn-warning btn-block" th:href="@{/changePassword}">Update Password</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12 mb-2">
+                            <!-- Disable Account button -->
+                            <a class="btn btn-danger btn-block" th:href="@{/profile/disableAccount}" onclick="if(!(confirm('Are You Sure, You want to disable Expense Manager Account?'))) return false">Disable Account</a>
+                        </div>
+                        <div class="col-12">
+                            <!-- Permanently Delete Account button -->
+                            <a class="btn btn-danger btn-block" th:href="@{/profile/delete}" onclick="if(!(confirm('Are You Sure, You want to delete Expense Manager Account?'))) return false">Permanently Delete Account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
